@@ -2,6 +2,7 @@ import cv2
 
 # Method to draw boundary around the detected feature
 def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text):
+    laught = cv2.imread('laught.gif', -1)
     # Converting image to gray-scale
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # detecting features in gray-scale image, returns coordinates, width and height of features
@@ -9,8 +10,9 @@ def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text):
     coords = []
     # drawing rectangle around the feature and labeling it
     for (x, y, w, h) in features:
+		#cv2.imshow('image', laught)
         cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
-        cv2.putText(img, text, (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
+        #cv2.putText(img, text, (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
         coords = [x, y, w, h]
     return coords
 
